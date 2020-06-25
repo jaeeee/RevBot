@@ -3,7 +3,7 @@ const cron = require('cron');
 
 const bot = new Discord.Client();
 
-const token = 'NzI1ODUxMDY4NDE1ODY4OTQ4.XvUwDQ.bFLnlTcIfPnlKIr8OF34w80CisY';
+const token = '';
 
 bot.on('ready', () => {
     console.log("bot is up");
