@@ -64,19 +64,19 @@ bot.on('message', msg => {
   }
 
   if (msg.content === "!ia") {
-    msg.reply("\nHowTo: https://imgur.com/a/PkyibM0 \nStats: https://strategywiki.org/wiki/MapleStory/Inner_Ability \nBiS guide (not mine): https://bit.ly/3a0dAML");
+    msg.reply("\nHowTo: <https://imgur.com/a/PkyibM0> \nStats: <https://strategywiki.org/wiki/MapleStory/Inner_Ability> \nBiS guide (not mine): <https://bit.ly/3a0dAML>");
   }
 
   if (msg.content === "!starforce") {
-    msg.reply("\nFull numbers: https://strategywiki.org/wiki/MapleStory/Spell_Trace_and_Star_Force \nCalculator: https://jsbin.com/bewimaxasa/1 \nExpected cost+boom: https://bit.ly/2YZT3Fa");
+    msg.reply("\nFull numbers: <https://strategywiki.org/wiki/MapleStory/Spell_Trace_and_Star_Force> \nCalculator: <https://jsbin.com/bewimaxasa/1> \nExpected cost+boom: <https://bit.ly/2YZT3Fa>");
   }
 
   if (msg.content === "!flames") {
-    msg.reply("\nGuide: https://bit.ly/2zHMInA \nCalculator: https://output.jsbin.com/tacijeq");
+    msg.reply("\nGuide: <https://bit.ly/2zHMInA> \nCalculator: <https://output.jsbin.com/tacijeq>");
   }
 
   if (msg.content === "!cubing") {
-    msg.reply("\nCubing Calculator: https://jsfiddle.net/SuckHard/gp5mjc0v/show \nCubing Sim: https://stripedypaper.github.io/cube/");
+    msg.reply("\nCubing Calculator: <https://jsfiddle.net/SuckHard/gp5mjc0v/show> \nCubing Sim: <https://stripedypaper.github.io/cube/>");
   }
 
   if (msg.content === "!flag") {
