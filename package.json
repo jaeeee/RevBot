@@ -17,7 +17,9 @@
   },
   "homepage": "https://github.com/jaeeee/RevBot#readme",
   "dependencies": {
+    "config": "^3.3.1",
     "cron": "^1.8.2",
-    "discord.js": "^12.2.0"
+    "discord.js": "^12.2.0",
+    "esm": "^3.2.25"
   }
 }
