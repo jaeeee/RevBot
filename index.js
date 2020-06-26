@@ -35,7 +35,7 @@ bot.on('message', msg=> {
             },
             title: ":triangular_flag_on_post: Flag Race Times :triangular_flag_on_post:",
             // url: "http://google.com",
-            description: "I will announce flag race 5 minutes before each time in the #flag-announcements!",
+            description: "I will announce flag race 5 minutes before each time in #flag-announcements!",
             fields: [{
                 name: "Please attend our flag races, we get points even if you just AFK!",
                 value: "**__:clock5: PDT (UTC -7): 5:00 AM, 12:00 PM, 2:00 PM, 3:00 PM, and 4:00 PM\n" +
