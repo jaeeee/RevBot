@@ -6,7 +6,7 @@ const bot = new Discord.Client();
 
 let token = config.get('token.key');
 
-const channelID = '725851446511272029';
+const channelID = '725873677278773320';
 
 bot.on('ready', () => {
     // bot.off();
