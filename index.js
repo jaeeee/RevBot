@@ -59,7 +59,7 @@ bot.on('message', msg => {
   //   msg.reply("ggpeter");
   // }
 
-  if (msg.content === "!help") {
+  if (msg.content === "!help" || msg.content === "commands") {
     msg.reply("Currently available commands: !flag, !notifs, !ia, !starforce, !flames, !cubing");
   }
 
