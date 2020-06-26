@@ -35,6 +35,22 @@ bot.on('message', msg => {
   // if (msg.content == "rawr") {
   //     bot.channels.cache.get(channelID).send("<@&725880768659980330>" + " :triangular_flag_on_post: Flag Race will begin in **_5 minutes_**! :triangular_flag_on_post:");
   // }
+  if (msg.content === "!notifs") {
+    if(msg.member.roles.cache.some(r=>["flaggers"].includes(r.name))) {
+      // console.log(`Yay, the author of the message has the role!`);
+      let role = msg.guild.roles.cache.find(r => r.name === "flaggers");
+      const guildMember = msg.member;
+      guildMember.roles.remove(role).catch(console.error);
+      msg.reply("You will no longer receive Flag Race notifications.");
+    } else {
+      // console.log(`Nope, noppers, nadda.`);
+      let role = msg.guild.roles.cache.find(r => r.name === "flaggers");
+      const guildMember = msg.member;
+      guildMember.roles.add(role).catch(console.error);
+      msg.reply("You have signed up for Flag Race notifications!");
+    }
+  }
+
   if (msg.content === "!flag") {
     msg.reply({
       embed: {
@@ -64,30 +80,30 @@ bot.on('message', msg => {
   }
 });
 
-bot.on('messageReactionAdd', async (reaction, user) => {
-	// When we receive a reaction we check if the reaction is partial or not
-	if (reaction.partial) {
-		// If the message this reaction belongs to was removed the fetching might result in an API error, which we need to handle
-		try {
-			await reaction.fetch();
-		} catch (error) {
-			console.log('Something went wrong when fetching the message: ', error);
-			// Return as `reaction.message.author` may be undefined/null
-			return;
-		}
-  }
-  if (reaction.message.id == 725894587813724202) {
-    console.log("correct");
-    const member = reaction.message.member;
-    member.roles.set([])
-  .then(member => console.log(`Member roles is now of ${member.roles.cache.size} size`))
-  .catch(console.error);
-	// Now the message has been cached and is fully available
-	console.log(`${reaction.message.author}'s message "${reaction.message.content}" gained a reaction!`);
-	// The reaction is now also fully available and the properties will be reflected accurately:
-	console.log(`${reaction.count} user(s) have given the same reaction to this message!`);
-  }
-});
+// bot.on('messageReactionAdd', async (reaction, user) => {
+// 	// When we receive a reaction we check if the reaction is partial or not
+// 	if (reaction.partial) {
+// 		// If the message this reaction belongs to was removed the fetching might result in an API error, which we need to handle
+// 		try {
+// 			await reaction.fetch();
+// 		} catch (error) {
+// 			console.log('Something went wrong when fetching the message: ', error);
+// 			// Return as `reaction.message.author` may be undefined/null
+// 			return;
+// 		}
+//   }
+//   if (reaction.message.id == 725894587813724202) {
+//     console.log("correct");
+//     const member = reaction.message.member;
+//     member.roles.set([])
+//   .then(member => console.log(`Member roles is now of ${member.roles.cache.size} size`))
+//   .catch(console.error);
+// 	// Now the message has been cached and is fully available
+// 	console.log(`${reaction.message.author}'s message "${reaction.message.content}" gained a reaction!`);
+// 	// The reaction is now also fully available and the properties will be reflected accurately:
+// 	console.log(`${reaction.count} user(s) have given the same reaction to this message!`);
+//   }
+// });
 
 
 bot.login(token);
