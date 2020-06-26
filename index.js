@@ -9,7 +9,11 @@ let token = config.get('token.key');
 const channelID = '725851446511272029';
 
 bot.on('ready', () => {
+    // bot.off();
     console.log("bot is up");
+    bot.user.setActivity("dead");
+    // bot.user.setStatus("slave to Revenance");
+    // bot.user.setPresence("");
     // bot.channels.cache.get(channelID).send("@everyone" + " I am back!");
 })
 
@@ -33,10 +37,10 @@ bot.on('message', msg=> {
             description: "I will announce flag race 5 minutes before each time in the flag announcement channel!",
             fields: [{
                 name: "Please attend our flag races, we get points even if you just AFK!",
-                value: "**__PDT (UTC -7): 5:00 AM, 12:00 PM, 2:00 PM, 3:00 PM, and 4:00 PM\n" +
-                "EDT (UTC -4): 8:00 AM, 3:00 PM, 5:00 PM, 6:00 PM, and 7:00 PM\n" +
-               "CEST (UTC +2): 2:00 PM, 9:00 PM, 11:00 PM, 12:00 AM, and 1:00 AM\n" +
-               "AEST (UTC +10): 10:00 PM, 5:00 AM, 7:00 AM, 8:00 AM, and 9:00 AM\n__**"
+                value: "**__:clock5: PDT (UTC -7): 5:00 AM, 12:00 PM, 2:00 PM, 3:00 PM, and 4:00 PM\n" +
+                ":clock8: EDT (UTC -4): 8:00 AM, 3:00 PM, 5:00 PM, 6:00 PM, and 7:00 PM\n" +
+               ":clock2: CEST (UTC +2): 2:00 PM, 9:00 PM, 11:00 PM, 12:00 AM, and 1:00 AM\n" +
+               ":clock10: AEST (UTC +10): 10:00 PM, 5:00 AM, 7:00 AM, 8:00 AM, and 9:00 AM\n__**"
               },
             ],
             timestamp: new Date(),
