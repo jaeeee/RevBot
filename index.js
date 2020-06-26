@@ -10,7 +10,7 @@ const bot = new Discord.Client({
 
 let token = config.get('token.key');
 
-const channelID = '725873677278773320';
+const channelID = '504562059279728640';
 
 
 bot.on('ready', () => {
@@ -23,16 +23,16 @@ bot.on('ready', () => {
   // bot.user.setPresence("");
   // bot.channels.cache.get(channelID).send("I am back online!");
   // bot.channels.cache.get(channelID).send("rawr");
-  scheduledMessage.start();
-  scheduledMessage2.start();
 
 })
 
 let scheduledMessage = new cron.CronJob('00 00 5,12,14,15,16  * * *', () => {
+  console.log("fire now (1)");
   bot.channels.cache.get(channelID).send("<@&725880768659980330>" + " :triangular_flag_on_post: Flag Race will begin in **_NOW_**! :triangular_flag_on_post:");
 });
 
 let scheduledMessage2 = new cron.CronJob('00 55 4,11,13,14,15  * * *', () => {
+  console.log("fire now (2)");
   bot.channels.cache.get(channelID).send("<@&725880768659980330>" + " :triangular_flag_on_post: Flag Race will begin in **_5 minutes_**! :triangular_flag_on_post:");
 });
 
@@ -138,5 +138,6 @@ bot.on('message', msg => {
 //   }
 // });
 
-
+scheduledMessage.start();
+scheduledMessage2.start();
 bot.login(token);
