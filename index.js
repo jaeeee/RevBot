@@ -13,6 +13,7 @@ bot.on('ready', () => {
     console.log("bot is up");
     // bot.user.setStatus("Flag Race announcement bot. Use !flag for flag race times.");
     bot.user.setActivity("dead");
+    // bot.channels.cache.get(channelID).send("<@&725880768659980330>" + " :triangular_flag_on_post: Flag Race will begin in **_5 minutes_**! :triangular_flag_on_post:");
     // bot.user.setStatus("slave to Revenance");
     // bot.user.setPresence("");
     // bot.channels.cache.get(channelID).send("I am back online!");
