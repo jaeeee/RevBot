@@ -76,7 +76,7 @@ bot.on('message', msg => {
   }
 
   if (msg.content === "!cubing") {
-    msg.reply("\Cubing Calculator: https://jsfiddle.net/SuckHard/gp5mjc0v/show");
+    msg.reply("\nCubing Calculator: https://jsfiddle.net/SuckHard/gp5mjc0v/show \nCubing Sim: https://stripedypaper.github.io/cube/");
   }
 
   if (msg.content === "!flag") {
