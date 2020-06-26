@@ -2,11 +2,16 @@ const config = require('config');
 const Discord = require('discord.js');
 const cron = require('cron');
 
-const bot = new Discord.Client();
+// const bot = new Discord.Client();
+
+const bot = new Discord.Client({
+  partials:  ['MESSAGE', 'CHANNEL', 'REACTION']
+});
 
 let token = config.get('token.key');
 
 const channelID = '725873677278773320';
+
 
 bot.on('ready', () => {
   // bot.off();
@@ -17,7 +22,7 @@ bot.on('ready', () => {
   // bot.user.setStatus("slave to Revenance");
   // bot.user.setPresence("");
   // bot.channels.cache.get(channelID).send("I am back online!");
-
+  // bot.channels.cache.get(channelID).send("rawr");
   scheduledMessage.start();
 
 })
@@ -25,7 +30,6 @@ bot.on('ready', () => {
 let scheduledMessage = new cron.CronJob('00 55 5,12,14,15,16  * * *', () => {
   bot.channels.cache.get(channelID).send("<@&725880768659980330>" + " :triangular_flag_on_post: Flag Race will begin in **_5 minutes_**! :triangular_flag_on_post:");
 });
-
 
 bot.on('message', msg => {
   // if (msg.content == "rawr") {
@@ -59,5 +63,31 @@ bot.on('message', msg => {
     });
   }
 });
+
+bot.on('messageReactionAdd', async (reaction, user) => {
+	// When we receive a reaction we check if the reaction is partial or not
+	if (reaction.partial) {
+		// If the message this reaction belongs to was removed the fetching might result in an API error, which we need to handle
+		try {
+			await reaction.fetch();
+		} catch (error) {
+			console.log('Something went wrong when fetching the message: ', error);
+			// Return as `reaction.message.author` may be undefined/null
+			return;
+		}
+  }
+  if (reaction.message.id == 725894587813724202) {
+    console.log("correct");
+    const member = reaction.message.member;
+    member.roles.set([])
+  .then(member => console.log(`Member roles is now of ${member.roles.cache.size} size`))
+  .catch(console.error);
+	// Now the message has been cached and is fully available
+	console.log(`${reaction.message.author}'s message "${reaction.message.content}" gained a reaction!`);
+	// The reaction is now also fully available and the properties will be reflected accurately:
+	console.log(`${reaction.count} user(s) have given the same reaction to this message!`);
+  }
+});
+
 
 bot.login(token);
