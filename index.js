@@ -11,6 +11,7 @@ const bot = new Discord.Client({
 let token = config.get('token.key');
 
 const channelID = '725873677278773320';
+const botChannelID = '504562059279728640';
 
 
 bot.on('ready', () => {
@@ -34,6 +35,12 @@ bot.on('ready', () => {
 let scheduledMessage2 = new cron.CronJob('00 55 4,11,13,14,15  * * *', () => {
   console.log("fire now (2)");
   bot.channels.cache.get(channelID).send("<@&725880768659980330>" + " :triangular_flag_on_post: Flag Race will begin in **_5 minutes_**! :triangular_flag_on_post:");
+});
+
+
+let dailyMessage = new cron.CronJob('00 00 5 * * *', () => {
+  // console.log("fire now (2)");
+  bot.channels.cache.get("199218706029608961").send("Hello everyone, happy reset! This is just a daily reminder to check in and GP cap. Thank you!");
 });
 
 bot.on('message', msg => {
@@ -64,27 +71,27 @@ bot.on('message', msg => {
   //   msg.reply("ggpeter");
   // }
 
-  if (msg.content === "!help" || msg.content === "commands") {
+  if (msg.content === "!help" || msg.content === "commands"  && msg.channel.id === botChannelID) {
     msg.reply("Currently available commands: !flag, !notifs, !ia, !starforce, !flames, !cubing");
   }
 
-  if (msg.content === "!ia") {
+  if (msg.content === "!ia" && msg.channel.id === botChannelID) {
     msg.reply("\nHowTo: <https://imgur.com/a/PkyibM0> \nStats: <https://strategywiki.org/wiki/MapleStory/Inner_Ability> \nBiS guide (not mine): <https://bit.ly/3a0dAML>");
   }
 
-  if (msg.content === "!starforce") {
+  if (msg.content === "!starforce" && msg.channel.id === botChannelID) {
     msg.reply("\nFull numbers: <https://strategywiki.org/wiki/MapleStory/Spell_Trace_and_Star_Force> \nCalculator: <https://jsbin.com/bewimaxasa/1> \nExpected cost+boom: <https://bit.ly/2YZT3Fa>");
   }
 
-  if (msg.content === "!flames") {
+  if (msg.content === "!flames" && msg.channel.id === botChannelID) {
     msg.reply("\nGuide: <https://bit.ly/2zHMInA> \nCalculator: <https://output.jsbin.com/tacijeq>");
   }
 
-  if (msg.content === "!cubing") {
+  if (msg.content === "!cubing" && msg.channel.id === botChannelID) {
     msg.reply("\nCubing Calculator: <https://jsfiddle.net/SuckHard/gp5mjc0v/show> \nCubing Sim: <https://stripedypaper.github.io/cube/>");
   }
 
-  if (msg.content === "!flag") {
+  if (msg.content === "!flag" && msg.channel.id === botChannelID) {
     msg.reply({
       embed: {
         color: 3447003,
@@ -139,5 +146,6 @@ bot.on('message', msg => {
 // });
 
 // scheduledMessage.start();
+dailyMessage.start();
 scheduledMessage2.start();
 bot.login(token);
