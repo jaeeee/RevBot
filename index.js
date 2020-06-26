@@ -11,6 +11,7 @@ const channelID = '725873677278773320';
 bot.on('ready', () => {
     // bot.off();
     console.log("bot is up");
+    // bot.user.setStatus("Flag Race announcement bot. Use !flag for flag race times.");
     bot.user.setActivity("dead");
     // bot.user.setStatus("slave to Revenance");
     // bot.user.setPresence("");
