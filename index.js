@@ -17,7 +17,7 @@ bot.on('ready', () => {
   // bot.off();
   console.log("bot is up");
   // bot.user.setStatus("Flag Race announcement bot. Use !flag for flag race times.");
-  bot.user.setActivity("dead");
+  bot.user.setActivity("roast beef");
   // bot.channels.cache.get(channelID).send("<@&725880768659980330>" + " :triangular_flag_on_post: Flag Race will begin in **_5 minutes_**! :triangular_flag_on_post:");
   // bot.user.setStatus("slave to Revenance");
   // bot.user.setPresence("");
@@ -51,6 +51,34 @@ bot.on('message', msg => {
     }
   }
 
+  // if (msg.content === "jae") {
+  //   msg.reply("jaebg");
+  // }
+
+  // if (msg.content === "gg") {
+  //   msg.reply("ggpeter");
+  // }
+
+  if (msg.content === "!help") {
+    msg.reply("Currently available commands: !flag, !notifs, !ia, !starforce, !flames, !cubing");
+  }
+
+  if (msg.content === "!ia") {
+    msg.reply("\nHowTo: https://imgur.com/a/PkyibM0 \nStats: https://strategywiki.org/wiki/MapleStory/Inner_Ability \nBiS guide (not mine): https://bit.ly/3a0dAML");
+  }
+
+  if (msg.content === "!starforce") {
+    msg.reply("\nFull numbers: https://strategywiki.org/wiki/MapleStory/Spell_Trace_and_Star_Force \nCalculator: https://jsbin.com/bewimaxasa/1 \nExpected cost+boom: https://bit.ly/2YZT3Fa");
+  }
+
+  if (msg.content === "!flames") {
+    msg.reply("\nGuide: https://bit.ly/2zHMInA \nCalculator: https://output.jsbin.com/tacijeq");
+  }
+
+  if (msg.content === "!cubing") {
+    msg.reply("\Cubing Calculator: https://jsfiddle.net/SuckHard/gp5mjc0v/show");
+  }
+
   if (msg.content === "!flag") {
     msg.reply({
       embed: {
@@ -61,7 +89,7 @@ bot.on('message', msg => {
         },
         title: ":triangular_flag_on_post: Flag Race Times :triangular_flag_on_post:",
         // url: "http://google.com",
-        description: "I will announce flag race 5 minutes before each time in #flag-announcements!",
+        description: "Type **_!notifs_** to enable notifications. I will announce Flag Race 5 minutes before each time in #flag-announcements!",
         fields: [{
           name: "Please attend our flag races, we get points even if you just AFK!",
           value: "**__:clock5: PDT (UTC -7): 5:00 AM, 12:00 PM, 2:00 PM, 3:00 PM, and 4:00 PM\n" +
