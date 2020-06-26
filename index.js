@@ -6,7 +6,7 @@ const bot = new Discord.Client();
 
 let token = config.get('token.key');
 
-const channelID = '725873677278773320';
+const channelID = '504562059279728640';
 
 bot.on('ready', () => {
     // bot.off();
@@ -15,17 +15,15 @@ bot.on('ready', () => {
     bot.user.setActivity("dead");
     // bot.user.setStatus("slave to Revenance");
     // bot.user.setPresence("");
-    // bot.channels.cache.get(channelID).send("@everyone" + " I am back!");
+    // bot.channels.cache.get(channelID).send("I am back online!");
 })
 
 let scheduledMessage = new cron.CronJob('00 55 5,12,14,15,16  * * *', () => {
     bot.channels.cache.get(channelID).send("@everyone" + " :triangular_flag_on_post: Flag Race will begin in **_5 minutes_**! :triangular_flag_on_post:");
 });
 
+
 bot.on('message', msg=> {
-    // if (msg.content == "announcement") {
-    //     bot.channels.cache.get(channelID).send("@everyone" + " :triangular_flag_on_post: Flag Race will begin in **_5 minutes_**! :triangular_flag_on_post:");
-    // }
     if (msg.content === "!flag") {
         msg.reply({embed: {
             color: 3447003,
