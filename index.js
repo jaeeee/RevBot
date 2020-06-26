@@ -24,10 +24,15 @@ bot.on('ready', () => {
   // bot.channels.cache.get(channelID).send("I am back online!");
   // bot.channels.cache.get(channelID).send("rawr");
   scheduledMessage.start();
+  scheduledMessage2.start();
 
 })
 
-let scheduledMessage = new cron.CronJob('00 55 5,12,14,15,16  * * *', () => {
+let scheduledMessage = new cron.CronJob('00 00 5,12,14,15,16  * * *', () => {
+  bot.channels.cache.get(channelID).send("<@&725880768659980330>" + " :triangular_flag_on_post: Flag Race will begin in **_NOW_**! :triangular_flag_on_post:");
+});
+
+let scheduledMessage2 = new cron.CronJob('00 55 4,11,13,14,15  * * *', () => {
   bot.channels.cache.get(channelID).send("<@&725880768659980330>" + " :triangular_flag_on_post: Flag Race will begin in **_5 minutes_**! :triangular_flag_on_post:");
 });
 
