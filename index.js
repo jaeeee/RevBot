@@ -19,6 +19,7 @@ bot.on('ready', () => {
   console.log("bot is up");
   // bot.user.setStatus("Flag Race announcement bot. Use !flag for flag race times.");
   bot.user.setActivity("roast beef");
+  // bot.channels.cache.get("199218706029608961").send("rawr");
   // bot.channels.cache.get(channelID).send("<@&725880768659980330>" + " :triangular_flag_on_post: Flag Race will begin in **_5 minutes_**! :triangular_flag_on_post:");
   // bot.user.setStatus("slave to Revenance");
   // bot.user.setPresence("");
@@ -33,13 +34,14 @@ bot.on('ready', () => {
 // });
 
 let scheduledMessage2 = new cron.CronJob('00 55 4,11,13,14,15  * * *', () => {
-  console.log("fire now (2)");
+  // console.log("fire now (2)");
   bot.channels.cache.get(channelID).send("<@&725880768659980330>" + " :triangular_flag_on_post: Flag Race will begin in **_5 minutes_**! :triangular_flag_on_post:");
 });
 
 
-let dailyMessage = new cron.CronJob('00 00 5 * * *', () => {
+let dailyMessage = new cron.CronJob('00 00 17 * * *', () => {
   // console.log("fire now (2)");
+  console.log("aye");
   bot.channels.cache.get("199218706029608961").send("Hello everyone, happy reset! This is just a daily reminder to check in and GP cap. Thank you!");
 });
 
