@@ -35,13 +35,14 @@ bot.on('ready', () => {
 
 let scheduledMessage2 = new cron.CronJob('00 55 4,11,13,14,15  * * *', () => {
   // console.log("fire now (2)");
+  console.log("sending flag announcement");
   bot.channels.cache.get(channelID).send("<@&725880768659980330>" + " :triangular_flag_on_post: Flag Race will begin in **_5 minutes_**! :triangular_flag_on_post:");
 });
 
 
 let dailyMessage = new cron.CronJob('00 00 17 * * *', () => {
   // console.log("fire now (2)");
-  console.log("aye");
+  console.log("sending daily message");
   bot.channels.cache.get("199218706029608961").send("Hello everyone, happy reset! This is just a daily reminder to check in and GP cap. Thank you!");
 });
 
