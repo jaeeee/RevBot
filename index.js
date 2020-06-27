@@ -46,6 +46,12 @@ let dailyMessage = new cron.CronJob('00 00 17 * * *', () => {
   bot.channels.cache.get("199218706029608961").send("Hello everyone, happy reset! This is just a daily reminder to check in and GP cap. Thank you!");
 });
 
+let gpqMessage = new cron.CronJob('00 00 20 * * 5', () => {
+  // console.log("fire now (2)");
+  console.log("sending GPQ message");
+  bot.channels.cache.get("199218706029608961").send("Hello everyone, we will be starting Guild PQ in about an hour. Thank you!");
+});
+
 bot.on('message', msg => {
   // if (msg.content == "rawr") {
   //     bot.channels.cache.get(channelID).send("<@&725880768659980330>" + " :triangular_flag_on_post: Flag Race will begin in **_5 minutes_**! :triangular_flag_on_post:");
@@ -151,4 +157,5 @@ bot.on('message', msg => {
 // scheduledMessage.start();
 dailyMessage.start();
 scheduledMessage2.start();
+gpqMessage.start();
 bot.login(token);
