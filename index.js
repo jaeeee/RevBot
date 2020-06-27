@@ -52,6 +52,12 @@ let gpqMessage = new cron.CronJob('00 00 20 * * 5', () => {
   bot.channels.cache.get("199218706029608961").send("Hello everyone, we will be starting Guild PQ in **_1 hour_**. See you all there!");
 });
 
+let gpqMessage = new cron.CronJob('00 30 20 * * 5', () => {
+  // console.log("fire now (2)");
+  console.log("sending GPQ (2) message");
+  bot.channels.cache.get("199218706029608961").send("Hello everyone, we will be starting Guild PQ in **_30 minutes_**. See you all there!");
+});
+
 bot.on('message', msg => {
   // if (msg.content == "rawr") {
   //     bot.channels.cache.get(channelID).send("<@&725880768659980330>" + " :triangular_flag_on_post: Flag Race will begin in **_5 minutes_**! :triangular_flag_on_post:");
