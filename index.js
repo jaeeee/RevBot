@@ -46,10 +46,10 @@ let dailyMessage = new cron.CronJob('00 00 17 * * *', () => {
   bot.channels.cache.get("199218706029608961").send("Hello everyone, happy reset! This is just a daily reminder to check in and GP cap. Thank you!");
 });
 
-let gpqMessage = new cron.CronJob('00 00 19 * * 5', () => {
+let gpqMessage = new cron.CronJob('00 00 20 * * 5', () => {
   // console.log("fire now (2)");
   console.log("sending GPQ message");
-  bot.channels.cache.get("199218706029608961").send("Hello everyone, we will be starting Guild PQ in about 2 hours. See you all there!");
+  bot.channels.cache.get("199218706029608961").send("Hello everyone, we will be starting Guild PQ in **_1 hour_**. See you all there!");
 });
 
 bot.on('message', msg => {
