@@ -52,7 +52,7 @@ let gpqMessage = new cron.CronJob('00 00 20 * * 5', () => {
   bot.channels.cache.get("199218706029608961").send("Hello everyone, we will be starting Guild PQ in **_1 hour_**. See you all there!");
 });
 
-let gpqMessage = new cron.CronJob('00 30 20 * * 5', () => {
+let gpqMessage2 = new cron.CronJob('00 30 20 * * 5', () => {
   // console.log("fire now (2)");
   console.log("sending GPQ (2) message");
   bot.channels.cache.get("199218706029608961").send("Hello everyone, we will be starting Guild PQ in **_30 minutes_**. See you all there!");
@@ -164,4 +164,5 @@ bot.on('message', msg => {
 dailyMessage.start();
 scheduledMessage2.start();
 gpqMessage.start();
+gpqMessage2.start();
 bot.login(token);
