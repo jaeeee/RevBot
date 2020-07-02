@@ -33,28 +33,28 @@ bot.on('ready', () => {
 //   bot.channels.cache.get(channelID).send("<@&725880768659980330>" + " :triangular_flag_on_post: Flag Race will begin in **_NOW_**! :triangular_flag_on_post:");
 // });
 
-let scheduledMessage2 = new cron.CronJob('55 12,19,21,22,23 * * *', () => {
+let flagMessage = new cron.CronJob('55 11,18,20,21,22 * * *', () => {
   // console.log("fire now (2)");
   console.log("Sending Flag Race announcement");
   bot.channels.cache.get(channelID).send("<@&725880768659980330>" + " :triangular_flag_on_post: Flag Race will begin in **_5 minutes_**! :triangular_flag_on_post:");
-}, null, true, "UTC");
+}, null, true, 'UTC');
 
-let dailyMessage = new cron.CronJob('00 00 * * *', () => {
+let dailyMessage = new cron.CronJob('0 0 * * *', () => {
   // console.log("fire now (2)");
   console.log("Sending daily message");
   bot.channels.cache.get("199218706029608961").send("Hello everyone, happy reset! This is just a daily reminder to check in and GP cap. Thank you!");
-}, null, true, "UTC");
+}, null, true, 'UTC');
 
-let gpqMessage = new cron.CronJob('00 22 * * 5', () => {
+let gpqMessage = new cron.CronJob('0 22 * * 5', () => {
   // console.log("fire now (2)");
   console.log("Sending GPQ message");
-  bot.channels.cache.get("199218706029608961").send("Hello everyone, we will be starting Guild PQ in **_1 hour_**. See you all there!");
+  bot.channels.cache.get("199218706029608961").send("Hello everyone, we will be starting Guild PQ in **_1 hour_**. See you all there at Guild HQ Channel 4 (via the Lea NPC in Henesys)!");
 });
 
 let gpqMessage2 = new cron.CronJob('30 22 * * 5', () => {
   // console.log("fire now (2)");
   console.log("Sending GPQ (2) message");
-  bot.channels.cache.get("199218706029608961").send("Hello everyone, we will be starting Guild PQ in **_30 minutes_**. See you all there!");
+  bot.channels.cache.get("199218706029608961").send("Hello everyone, we will be starting Guild PQ in **_30 minutes_**! See you all there at Guild HQ Channel 4 (via the Lea NPC in Henesys)!");
 });
 
 bot.on('message', msg => {
@@ -173,7 +173,7 @@ if (msg.content === "!flag" && msg.channel.id === botChannelID) {
 
 // scheduledMessage.start();
 dailyMessage.start();
-scheduledMessage2.start();
+flagMessage.start();
 gpqMessage.start();
 gpqMessage2.start();
 bot.login(token);
