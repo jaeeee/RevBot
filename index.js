@@ -33,28 +33,27 @@ bot.on('ready', () => {
 //   bot.channels.cache.get(channelID).send("<@&725880768659980330>" + " :triangular_flag_on_post: Flag Race will begin in **_NOW_**! :triangular_flag_on_post:");
 // });
 
-let scheduledMessage2 = new cron.CronJob('00 55 4,11,13,14,15  * * *', () => {
+let scheduledMessage2 = new cron.CronJob('55 12,19,21,22,23 * * *', () => {
   // console.log("fire now (2)");
-  console.log("sending flag announcement");
+  console.log("Sending Flag Race announcement");
   bot.channels.cache.get(channelID).send("<@&725880768659980330>" + " :triangular_flag_on_post: Flag Race will begin in **_5 minutes_**! :triangular_flag_on_post:");
-});
+}, null, true, "UTC");
 
-
-let dailyMessage = new cron.CronJob('00 00 17 * * *', () => {
+let dailyMessage = new cron.CronJob('00 00 * * *', () => {
   // console.log("fire now (2)");
-  console.log("sending daily message");
+  console.log("Sending daily message");
   bot.channels.cache.get("199218706029608961").send("Hello everyone, happy reset! This is just a daily reminder to check in and GP cap. Thank you!");
-});
+}, null, true, "UTC");
 
-let gpqMessage = new cron.CronJob('00 00 20 * * 5', () => {
+let gpqMessage = new cron.CronJob('00 22 * * 5', () => {
   // console.log("fire now (2)");
-  console.log("sending GPQ message");
+  console.log("Sending GPQ message");
   bot.channels.cache.get("199218706029608961").send("Hello everyone, we will be starting Guild PQ in **_1 hour_**. See you all there!");
 });
 
-let gpqMessage2 = new cron.CronJob('00 30 20 * * 5', () => {
+let gpqMessage2 = new cron.CronJob('30 22 * * 5', () => {
   // console.log("fire now (2)");
-  console.log("sending GPQ (2) message");
+  console.log("Sending GPQ (2) message");
   bot.channels.cache.get("199218706029608961").send("Hello everyone, we will be starting Guild PQ in **_30 minutes_**. See you all there!");
 });
 
@@ -106,34 +105,46 @@ bot.on('message', msg => {
     msg.reply("\nCubing Calculator: <https://jsfiddle.net/SuckHard/gp5mjc0v/show> \nCubing Sim: <https://stripedypaper.github.io/cube/>");
   }
 
-  if (msg.content === "!flag" && msg.channel.id === botChannelID) {
-    msg.reply({
-      embed: {
-        color: 3447003,
-        author: {
-          name: bot.user.username,
-          icon_url: bot.user.avatarURL
-        },
-        title: ":triangular_flag_on_post: Flag Race Times :triangular_flag_on_post:",
-        // url: "http://google.com",
-        description: "Type **_!notifs_** to enable notifications. I will announce Flag Race 5 minutes before each time in #flag-announcements!",
-        fields: [{
-          name: "Please attend our flag races, we get points even if you just AFK!",
-          value: "**__:clock5: PDT (UTC -7): 5:00 AM, 12:00 PM, 2:00 PM, 3:00 PM, and 4:00 PM\n" +
-            ":clock8: EDT (UTC -4): 8:00 AM, 3:00 PM, 5:00 PM, 6:00 PM, and 7:00 PM\n" +
-            ":clock2: CEST (UTC +2): 2:00 PM, 9:00 PM, 11:00 PM, 12:00 AM, and 1:00 AM\n" +
-            ":clock10: AEST (UTC +10): 10:00 PM, 5:00 AM, 7:00 AM, 8:00 AM, and 9:00 AM\n__**"
-        },
-        ],
-        timestamp: new Date(),
-        footer: {
-          icon_url: bot.user.avatarURL,
-          text: "© Revenance's Favorite Bot!"
-        }
-      }
-    });
+
+// Flag Race times in UTC
+var moment = require('moment-timezone');
+
+var daylight = moment.utc({hour: 12, minute: 0}); // Daylight Snowfield
+var sunset = moment.utc({hour: 19, minute: 0}); // Sunset Snowfield
+var night1 = moment.utc({hour: 21, minute: 0}); // Night Snowfield 1/3
+var night2 = moment.utc({hour: 22, minute: 0}); // Night Snowfield 2/3
+var night3 = moment.utc({hour: 23, minute: 0}); // Night Snowfield 3/3
+
+if (msg.content === "!flag" && msg.channel.id === botChannelID) {
+		
+	daylightpt = daylight.tz('America/Los_Angeles').format('ha').toString();
+	sunsetpt = sunset.tz('America/Los_Angeles').format('ha').toString();
+	night1pt = night1.tz('America/Los_Angeles').format('ha').toString();
+	night2pt = night2.tz('America/Los_Angeles').format('ha').toString();
+	night3pt = night3.tz('America/Los_Angeles').format('ha').toString();
+	
+	daylightet = daylight.tz('America/New_York').format('ha').toString();
+	sunsetet = sunset.tz('America/New_York').format('ha').toString();
+	night1et = night1.tz('America/New_York').format('ha').toString();
+	night2et = night2.tz('America/New_York').format('ha').toString();
+	night3et = night3.tz('America/New_York').format('ha').toString();
+		
+	msg.reply("The Flag Race schedule is as follows for Pacific Time: \n" + 
+	"\n**Daylight Snowfield**: " + daylightpt + 
+	"\n**Sunset Snowfield**: " + sunsetpt + 
+	"\n**Night Snowfield**: " + night1pt + 
+	", " + night2pt + 
+	", and " + night3pt + "\n\n" +
+	"The Flag Race schedule is as follows for Eastern Time: \n" + 
+	"\n**Daylight Snowfield**: " + daylightet + 
+	"\n**Sunset Snowfield**: " + sunsetet + 
+	"\n**Night Snowfield**: " + night1et + 
+	", " + night2et + 
+	", and " + night3et);
   }
+
 });
+
 
 // bot.on('messageReactionAdd', async (reaction, user) => {
 // 	// When we receive a reaction we check if the reaction is partial or not
